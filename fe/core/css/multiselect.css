@@ -1,0 +1,13 @@
+.multi-select input[type="text"] {
+    cursor: pointer;
+    height: 20px;
+    width: 200px;
+    border: 0;
+}
+
+.multi-select-element input[type="checkbox"] {
+    cursor: pointer;
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+}
