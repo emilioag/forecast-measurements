@@ -1,0 +1,24 @@
+server {
+        server_name localhost;
+
+        listen  80;
+        listen  [::]:80 default ipv6only=on;
+        root /var/www/forecast/be;
+        charset utf-8;
+        access_log /var/log/nginx/forecast.access.log;
+        error_log /var/log/nginx/forecast.error.log;
+
+        location / {
+             root /var/www/forecast/fe;
+             index index.html;
+        }
+
+
+        location /api {
+            uwsgi_pass unix:/tmp/uwsgi.forecast.socket;
+            include uwsgi_params;
+            uwsgi_param UWSGI_PYHOME /opt/venv/forecast;
+            uwsgi_param UWSGI_CHIDIR /var/www/forecast/be;
+            uwsgi_param UWSGI_SCRIPT forecast;
+        }
+}
