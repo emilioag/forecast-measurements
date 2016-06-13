@@ -1,5 +1,17 @@
 # Forecast Measurements
 
+## Description
+ Can load data through csv file and plot it.
+ The files should have the next format:
+  - Header: id_signal, timestamp, value
+  - id_signal: in [humidity, temperature, wind, visibility, presure, rain]
+  - timestamp: timestamp
+  - value: number (value of the measure)
+ The monthly, weekly and daily values are calculated as the average of the values of this period but if the signal is 'rain' the values are calculated as the sum of the values for each day.
+
+You can find an example of csv_file in be/data.
+
+
 ## Install with Nginx + uWSGI
 ### Clone repo
 
