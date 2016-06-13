@@ -13,6 +13,10 @@ response.headers['Access-Control-Allow-Headers'] =\
 
 
 def uploadFile():
+    """
+        Get a list of csv files load all in the same memory structure and
+        store in database.
+    """
     m = Measurement()
     for name, file in request.POST.allitems():
         if name == 'uploadfile' and isinstance(file, FileUpload):
@@ -27,6 +31,9 @@ def uploadFile():
 
 
 def getChartData():
+    """
+        Get the data formated to plot it.
+    """
     m = Measurement()
     iso = "%Y-%m-%dT%H:%M:%S.%fZ"
     response.status = 200
@@ -48,6 +55,9 @@ def getChartData():
 
 
 def allSensorIds():
+    """
+        Get all the sensor ids
+    """
     m = Measurement()
     sensor_ids = m.sensor_ids()
     response.status = 200
@@ -55,6 +65,9 @@ def allSensorIds():
 
 
 def allSignalIds():
+    """
+        Get all the signal ids
+    """
     m = Measurement()
     signal_ids = m.signal_ids()
     response.status = 200
